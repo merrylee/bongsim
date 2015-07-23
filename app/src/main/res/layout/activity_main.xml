@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    >
+
+
+
+    <LinearLayout
+        android:id="@+id/writeBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/message_bar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5sp"
+            android:layout_weight="1"
+            android:hint="Write here"
+            android:padding="10sp"
+            android:textColor="@color/textFieldColor"
+            android:background="@drawable/message_field"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_margin="5sp"
+            android:paddingLeft="15sp"
+            android:paddingRight="15sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:onClick="sendMessage"
+            android:background="@drawable/send_button"
+            android:text="SEND"
+            android:textColor="#FFF"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/typing"
+        android:gravity="center"
+        android:layout_above="@id/writeBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_above="@id/typing"
+        android:layout_alignParentTop="true"
+        android:cacheColorHint="@color/trsprt"
+        android:divider="@color/trsprt"
+        android:listSelector="@color/trsprt"
+        android:transcriptMode="normal">
+    </ListView>
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/writeBar"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/main_empty_list"/>
+
+
+
+</RelativeLayout>

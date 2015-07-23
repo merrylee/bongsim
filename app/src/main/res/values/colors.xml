@@ -1,0 +1,16 @@
+<resources>
+    <color name="textColor">#FFA7A7</color>
+    <color name="bontext">#ED9595</color>
+    <color name="listViewBg">#968376</color>
+    <color name="textFieldColor">#000</color>
+    <color name="textShadow">#FFF</color>
+    <color name="trsprt">#00000000</color>
+    <color name="barDarkColor">#CECECE</color>
+    <color name="barMediumColor">#DFDEE0</color>
+    <color name="barLightColor">#F2F2F2</color>
+    <color name="bontextBg">#7dFFFFFF</color>
+
+    <color name="sendDarkColor">#573A46</color>
+    <color name="sendMediumColor">#735B65</color>
+    <color name="sendLightColor">#8A6D79</color>
+</resources>
