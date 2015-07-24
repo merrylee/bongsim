@@ -1,7 +1,6 @@
 package com.example.forproject.bongsim;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -123,7 +122,6 @@ public class MsgAdapter extends BaseAdapter {
             case 1:
                 ImageView imgHolder = (ImageView)convertView.findViewById(R.id.msg_img);
                 imgHolder.setImageResource(message.getId());
-
                 break;
 
         }

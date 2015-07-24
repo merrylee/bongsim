@@ -1,6 +1,8 @@
 package com.example.forproject.bongsim;
 
 import android.app.ListActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -23,28 +26,37 @@ public class MainActivity extends ListActivity {
     SetAnswer setAnswer;
     TextView typing;
 
+    public static final String TAG = "MainActivity";
+    public DatabaseHelper dbHelper;
+    public SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        typing = (TextView)findViewById(R.id.typing);
-        text = (EditText)findViewById(R.id.text);
-        //sender = Utility.sender[rand.nextInt(Utility.sender.length-1)]; //sender중 하나의 메시지 가져오기
+        boolean isOpen = openDatabase();
+        if(isOpen) {
 
-        this.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg));
+            typing = (TextView) findViewById(R.id.typing);
+            text = (EditText) findViewById(R.id.text);
+            //sender = Utility.sender[rand.nextInt(Utility.sender.length-1)]; //sender중 하나의 메시지 가져오기
 
-        messages = new ArrayList<Message>();
-        setAnswer = new SetAnswer(this);
+            this.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg));
 
-        adapter = new MsgAdapter(this, messages);
-        setListAdapter(adapter); // main_activity.xml의 리스트뷰(default)에 어댑터 연결
+            messages = new ArrayList<Message>();
+            setAnswer = new SetAnswer(this, db);
 
+            adapter = new MsgAdapter(this, messages);
+            setListAdapter(adapter); // main_activity.xml의 리스트뷰(default)에 어댑터 연결
+        }
     }
 
     public void sendMessage(View v){      // SEND버튼 눌렀을 때
         String newMessage = text.getText().toString().trim();
+
+
         if(newMessage.length()>0){
             text.setText("");
             addNewMessage(new Message(newMessage, true)); //---ok
@@ -114,8 +126,15 @@ public class MainActivity extends ListActivity {
 
         messages.add(m);
         adapter.notifyDataSetChanged(); // 화면에 출력 , adapter.getView()
-        getListView().setSelection(messages.size()-1); // 위치설정
+        getListView().setSelection(messages.size() - 1); // 위치설정
 
+    }
+
+    private boolean openDatabase() {
+//        println("opening database [" + DATABASE_NAME + "].");
+        dbHelper = new DatabaseHelper(this, TAG);
+        db = dbHelper.getWritableDatabase();
+        return true;
     }
 
     @Override
