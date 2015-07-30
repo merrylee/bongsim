@@ -1,4 +1,4 @@
 <resources>
-    <item type="id" name="imgId"></item>
-    <item type="id" name="textId"></item>
+    <item name="imgId" type="id"></item>
+    <item name="textId" type="id"></item>
 </resources>

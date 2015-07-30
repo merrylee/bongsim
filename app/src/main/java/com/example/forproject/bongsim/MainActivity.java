@@ -1,7 +1,6 @@
 package com.example.forproject.bongsim;
 
 import android.app.ListActivity;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,13 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 
 public class MainActivity extends ListActivity {
 
-    ArrayList<Message> messages;
+    ArrayList<MyMessage> MyMessages;
     MsgAdapter adapter;
     EditText text;
     static Random rand = new Random();
@@ -37,7 +35,7 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
 
         boolean isOpen = openDatabase();
-        if(isOpen) {
+        if (isOpen) {
 
             typing = (TextView) findViewById(R.id.typing);
             text = (EditText) findViewById(R.id.text);
@@ -45,36 +43,36 @@ public class MainActivity extends ListActivity {
 
             this.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg));
 
-            messages = new ArrayList<Message>();
+            MyMessages = new ArrayList<MyMessage>();
             setAnswer = new SetAnswer(this, db);
 
-            adapter = new MsgAdapter(this, messages);
+            adapter = new MsgAdapter(this, MyMessages);
             setListAdapter(adapter); // main_activity.xml의 리스트뷰(default)에 어댑터 연결
         }
     }
 
-    public void sendMessage(View v){      // SEND버튼 눌렀을 때
+    public void sendMessage(View v) {      // SEND버튼 눌렀을 때
         String newMessage = text.getText().toString().trim();
 
 
-        if(newMessage.length()>0){
+        if (newMessage.length() > 0) {
             text.setText("");
-            addNewMessage(new Message(newMessage, true)); //---ok
+            addNewMessage(new MyMessage(newMessage, true)); //---ok
             new SendMessage().execute(newMessage);
         }
     }
 
-    private class SendMessage extends AsyncTask<String, String, Message>{    // doInBg -> onProgressUd(on main thread) -> onPostexe(on main thread)
+    private class SendMessage extends AsyncTask<String, String, MyMessage> {    // doInBg -> onProgressUd(on main thread) -> onPostexe(on main thread)
         @Override
-        protected Message doInBackground(String... params) {  // on another thread
-            try{
+        protected MyMessage doInBackground(String... params) {  // on another thread
+            try {
                 Thread.sleep(100);
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             this.publishProgress(String.format("Bongsim started writing"));
-            try{
+            try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -91,29 +89,29 @@ public class MainActivity extends ListActivity {
         }
 
         @Override
-        protected void onPostExecute(Message s) {   // 봉심이가 보내는 메시지 추가하기
-            /*if(messages.get(messages.size()-1).isStatusMessage){  // status message delete : Bongsim has entered text
-                messages.remove(messages.size()-1);
+        protected void onPostExecute(MyMessage s) {   // 봉심이가 보내는 메시지 추가하기
+/*            if (messages.get(messages.size() - 1).isStatusMessage) {  // status message delete : Bongsim has entered text
+                messages.remove(messages.size() - 1);
             }*/
+
             addNewMessage(s);
         }
 
         @Override
         protected void onProgressUpdate(String... values) {  // on main thread * (doInBackground).publishProgress()의 매개변수를 values[]에 저장
-            /*if(messages.get(messages.size()-1).isStatusMessage){      // "Bongsim started writing"이 status이므로, 가장 최근의 message는 status.
-                messages.get(messages.size()-1).setMessage(values[0]); // Bongsim started writing -> Bongsim has entered text
+           /* if (messages.get(messages.size() - 1).isStatusMessage) {      // "Bongsim started writing"이 status이므로, 가장 최근의 message는 status.
+                messages.get(messages.size() - 1).setMessage(values[0]); // Bongsim started writing -> Bongsim has entered text
                 adapter.notifyDataSetChanged();
-                getListView().setSelection(messages.size()-1);
-            }
-            else{
+                getListView().setSelection(messages.size() - 1);
+            } else {
                 addNewMessage(new Message(true, values[0]));  // 첫 publishProgress() : Bongsim started writing(status message)
             }*/
+
             typing.setText(values[0]);
             typing.setTextSize(15);
-            if(values[0].equals("")){
+            if (values[0].equals("")) {
                 typing.setBackgroundColor(getResources().getColor(R.color.trsprt));
-            }
-            else{
+            } else {
                 typing.setTextColor(getResources().getColor(R.color.bontext));
                 typing.setBackgroundColor(getResources().getColor(R.color.bontextBg));
             }
@@ -122,11 +120,12 @@ public class MainActivity extends ListActivity {
         }
     }
 
-    void addNewMessage(Message m) {
 
-        messages.add(m);
+    void addNewMessage(MyMessage m) {
+
+        MyMessages.add(m);
         adapter.notifyDataSetChanged(); // 화면에 출력 , adapter.getView()
-        getListView().setSelection(messages.size() - 1); // 위치설정
+        getListView().setSelection(MyMessages.size() - 1); // 위치설정
 
     }
 

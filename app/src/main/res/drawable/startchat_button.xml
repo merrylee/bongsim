@@ -1,52 +1,24 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_enabled="true"
-        android:state_pressed="true">
-        <shape android:padding="10dp"
-            android:shape="rectangle">
-            <gradient android:startColor="@color/sendLightColor"
-                android:endColor="@color/sendDarkColor"
-                android:centerColor="@color/sendMediumColor"
-                android:angle="-45"></gradient>
-            <stroke
-                android:width="2dp" android:color="#000000">
-            </stroke>
-            <corners
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"></corners>
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape android:padding="10dp" android:shape="rectangle">
+            <gradient android:angle="-45" android:centerColor="@color/sendMediumColor" android:endColor="@color/sendDarkColor" android:startColor="@color/sendLightColor"></gradient>
+            <stroke android:width="2dp" android:color="#000000"></stroke>
+            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" android:topLeftRadius="10dp" android:topRightRadius="10dp"></corners>
         </shape>
     </item>
 
-    <item android:state_enabled="true"
-        android:state_focused="true">
-        <shape android:padding="10dp"
-            android:shape="rectangle">
-            <gradient android:startColor="@color/sendLightColor"
-                android:endColor="@color/sendDarkColor"
-                android:centerColor="@color/sendMediumColor"
-                android:angle="-45"></gradient>
-            <corners
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"></corners>
+    <item android:state_enabled="true" android:state_focused="true">
+        <shape android:padding="10dp" android:shape="rectangle">
+            <gradient android:angle="-45" android:centerColor="@color/sendMediumColor" android:endColor="@color/sendDarkColor" android:startColor="@color/sendLightColor"></gradient>
+            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" android:topLeftRadius="10dp" android:topRightRadius="10dp"></corners>
         </shape>
     </item>
 
     <item android:state_enabled="true">
-        <shape android:padding="10dp"
-            android:shape="rectangle">
-            <gradient android:startColor="@color/sendLightColor"
-                android:endColor="@color/sendDarkColor"
-                android:centerColor="@color/sendMediumColor"
-                android:angle="-45"></gradient>
-            <corners
-                android:bottomLeftRadius="10dp"
-                android:bottomRightRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"></corners>
+        <shape android:padding="10dp" android:shape="rectangle">
+            <gradient android:angle="-45" android:centerColor="@color/sendMediumColor" android:endColor="@color/sendDarkColor" android:startColor="@color/sendLightColor"></gradient>
+            <corners android:bottomLeftRadius="10dp" android:bottomRightRadius="10dp" android:topLeftRadius="10dp" android:topRightRadius="10dp"></corners>
         </shape>
     </item>
 </selector>

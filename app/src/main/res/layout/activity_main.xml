@@ -2,20 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
     >
-
-
 
     <LinearLayout
         android:id="@+id/writeBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/message_bar"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="@drawable/message_bar"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/text"
@@ -23,32 +20,32 @@
             android:layout_height="fill_parent"
             android:layout_margin="5sp"
             android:layout_weight="1"
+            android:background="@drawable/message_field"
             android:hint="Write here"
             android:padding="10sp"
-            android:textColor="@color/textFieldColor"
-            android:background="@drawable/message_field"/>
+            android:textColor="@color/textFieldColor" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_margin="5sp"
+            android:background="@drawable/send_button"
+            android:onClick="sendMessage"
+            android:paddingBottom="5sp"
             android:paddingLeft="15sp"
             android:paddingRight="15sp"
             android:paddingTop="5sp"
-            android:paddingBottom="5sp"
-            android:onClick="sendMessage"
-            android:background="@drawable/send_button"
             android:text="SEND"
-            android:textColor="#FFF"/>
+            android:textColor="#FFF" />
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/typing"
-        android:gravity="center"
-        android:layout_above="@id/writeBar"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:layout_above="@id/writeBar"
+        android:gravity="center" />
 
 
     <ListView
@@ -60,8 +57,7 @@
         android:cacheColorHint="@color/trsprt"
         android:divider="@color/trsprt"
         android:listSelector="@color/trsprt"
-        android:transcriptMode="normal">
-    </ListView>
+        android:transcriptMode="normal"></ListView>
 
     <TextView
         android:id="@android:id/empty"
@@ -70,8 +66,7 @@
         android:layout_above="@+id/writeBar"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:text="@string/main_empty_list"/>
-
+        android:text="@string/main_empty_list" />
 
 
 </RelativeLayout>

@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             String DROP_SQL = "drop table if exists " + TABLE_NAME;
             db.execSQL(DROP_SQL);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             Log.e(TAG, "Exception in DROP_SQL", ex);
         }
 
@@ -42,15 +42,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         try {
             db.execSQL(CREATE_SQL);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             Log.e(TAG, "Exception in CREATE_SQL", ex);
         }
 
 //        println("inserting records.");
         try {
-            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('선민', '수진이~', 'false');" );
+            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('선민', '수진이~', 'false');");
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('선민', '응응?', 'false');");
-            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('선민', '뭐', 'false');" );
+            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('선민', '뭐', 'false');");
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('안녕', '봉심: 안녕안녕!', 'false');");
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('안녕', '봉심: 안녕하세요', 'false');");
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('안녕', '봉심: 반가워', 'false');");
@@ -65,19 +65,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('배고파', '봉심: 우리 밥먹자!', 'false');");
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('반가워', '봉심: 나도 반가워 헤헤', 'false');");
             db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('잘가', '봉심: 다음에 또 놀자~', 'false');");
-            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('너사진', '"+R.drawable.bonbon+"', 'true');");
-            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('오늘점심', '"+R.drawable.meatsteak+"', 'true');");
+            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('너사진', '" + R.drawable.bonbon + "', 'true');");
+            db.execSQL("insert into " + TABLE_NAME + "(key, answer, image) values ('오늘점심', '" + R.drawable.meatsteak + "', 'true');");
 
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             Log.e(TAG, "Exception in insert SQL", ex);
         }
     }
 
 
-//    private void println(String msg) {
-//        Log.d(TAG, msg);
-//        status.append("\n" + msg);
-//    }
+  /*  private void println(String msg) {
+        Log.d(TAG, msg);
+        status.append("\n" + msg);
+    }*/
 
     public void onOpen(SQLiteDatabase db) {
 //            println("opened database [" + DATABASE_NAME + "].");

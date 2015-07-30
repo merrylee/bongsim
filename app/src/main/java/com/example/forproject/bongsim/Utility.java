@@ -6,7 +6,7 @@ package com.example.forproject.bongsim;
 public class Utility {
 
     //public static final String[] sender = new String[] {"Lalit", "RobinHood", "Vice Captain", "PurpleDroid" };
-    public static final String[] messages = new String[] {
+    public static final String[] messages = new String[]{
             "안녕!",
             "난 봉심이야, 잘 부탁해!",
             "나도 반가워~",
